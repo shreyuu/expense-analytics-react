@@ -1,16 +1,14 @@
 import React from 'react';
 
-const Analytics = ({ expenses }) => {
-  const totalExpenses = expenses.reduce((total, expense) => total + parseFloat(expense.amount || 0), 0);
-  const expenseCount = expenses.length;
-
+function Analytics({ expenses }) {
+  const totalExpense = expenses.reduce((acc, expense) => acc + expense.amount, 0);
+  
   return (
-    <div className="p-4 bg-blue-50 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-2">📊 Analytics</h2>
-      <p className="text-gray-600">Total Expenses: <span className="font-bold text-blue-600">${totalExpenses.toFixed(2)}</span></p>
-      <p className="text-gray-600">Number of Transactions: <span className="font-bold text-blue-600">{expenseCount}</span></p>
+    <div className="mt-4 p-4 border border-gray-300 rounded">
+      <h2 className="text-xl font-bold mb-2">Analytics</h2>
+      <p>Total Expenses: ₹{totalExpense.toFixed(2)}</p>
     </div>
   );
-};
+}
 
 export default Analytics;
