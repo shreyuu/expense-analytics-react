@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await fetch('http://localhost:5001/api/expenses');
+        const response = await fetch('http://localhost:5002/api/expenses'); // Updated port
         const data = await response.json();
         setExpenses(data);
       } catch (error) {
@@ -24,7 +24,7 @@ function App() {
   
   const addExpense = async (expense) => {
     try {
-      const response = await fetch('http://localhost:5001/api/expenses', {
+      const response = await fetch('http://localhost:5002/api/expenses', { // Updated port
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,10 +40,10 @@ function App() {
   
   return (
     <div className="container mx-auto p-4">
-    <h1 className="text-2xl font-bold text-center mb-4">Expense Tracker</h1>
-    <ExpenseForm onAddExpense={addExpense} />
-    <ExpenseList expenses={expenses} />
-    <Analytics expenses={expenses} />
+      <h1 className="text-2xl font-bold text-center mb-4">Expense Tracker</h1>
+      <ExpenseForm onAddExpense={addExpense} />
+      <ExpenseList expenses={expenses} />
+      <Analytics expenses={expenses} />
     </div>
   );
 }
